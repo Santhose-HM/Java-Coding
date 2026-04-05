@@ -1,25 +1,21 @@
-package stringTwoPointers;
+package recursion;
 
 public class Palindrome {
     public static void main(String[] args) {
         String str = "Madam";
-        if(isPalindrome(str.toLowerCase())){
-            System.out.println("Given String is Palindrome");
+        if( isPalindrome(str.toLowerCase(),0,str.length()-1)){
+            System.out.println("It is palindrome");
         }else{
-            System.out.println("Given String is not Palindrome");
+            System.out.println("It is not palindrome");
         }
     }
 
-    public static boolean isPalindrome(String str){
-        int left = 0;
-        int right  = str.length()-1;
-        while(left<right){
-            if(str.charAt(left)!=str.charAt(right)){
-                return false;
-            }
-            left++;
-            right--;
-        }
-        return true;
+    public static boolean isPalindrome(String s,int left,int right){
+        if(left>=right) return true;
+
+        if(s.charAt(left)!=s.charAt(right)) return false;
+
+        return isPalindrome(s,left+1,right-1);
+
     }
 }
